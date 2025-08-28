@@ -1,0 +1,6 @@
+@SeaFight.API_HostAddress = http://localhost:5224
+
+GET {{SeaFight.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

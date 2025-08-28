@@ -1,0 +1,17 @@
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\SeaFight.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\SeaFight.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\SeaFight.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\SeaFight.Infrastructure.AssemblyInfo.cs
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\SeaFight.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\bin\Debug\net9.0\SeaFight.Infrastructure.deps.json
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\bin\Debug\net9.0\SeaFight.Infrastructure.runtimeconfig.json
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\bin\Debug\net9.0\SeaFight.Infrastructure.dll
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\bin\Debug\net9.0\SeaFight.Infrastructure.pdb
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\bin\Debug\net9.0\SeaFight.Domain.dll
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\bin\Debug\net9.0\SeaFight.Domain.pdb
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\SeaFight.694B2B7C.Up2Date
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\SeaFight.Infrastructure.dll
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\refint\SeaFight.Infrastructure.dll
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\SeaFight.Infrastructure.pdb
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\SeaFight.Infrastructure.genruntimeconfig.cache
+C:\Users\User\source\repos\SeaFight\src\SeaFight.Infrastructure\obj\Debug\net9.0\ref\SeaFight.Infrastructure.dll

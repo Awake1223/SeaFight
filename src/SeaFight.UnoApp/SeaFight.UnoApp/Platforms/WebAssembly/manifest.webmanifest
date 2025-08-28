@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "SeaFight.UnoApp",
+  "display": "standalone",
+  "name": "SeaFight.UnoApp",
+  "short_name": "SeaFight.UnoApp",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}

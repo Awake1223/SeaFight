@@ -21,7 +21,7 @@ namespace SeaFight.Domain.Models
 
         // Связь: Какой игрок совершил этот выстрел
         public virtual UserModel Player { get; set; }
-        public Guid PlayerId { get; set; } // Внешний ключ на Player
+        public Guid? PlayerId { get; set; } // Внешний ключ на Player
 
 
         public enum ShotResult

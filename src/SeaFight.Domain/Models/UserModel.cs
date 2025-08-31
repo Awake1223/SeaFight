@@ -15,5 +15,7 @@ namespace SeaFight.Domain.Models
         public virtual ICollection<GameShotModel> Shots { get; set; } = new List<GameShotModel>();
 
         public virtual ICollection<ShipModel> Ships { get; set; } = new List<ShipModel>();
+
+        
     }
 }

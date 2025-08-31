@@ -182,31 +182,31 @@ namespace SeaFight.API.Hubs
             return shotResult;
         }
 
-        private ShotResultDto CheckHit(List<ShipPlacement> ships, int x, int y)
+        private ShotResultDto CheckHit(List<ShipPlacement> ships, int x, int y) //Проверка попадания
         {
-            foreach (var ship in ships)
+            foreach (var ship in ships) // Делаем цикл для проверки попадания в корабль
             {
-                if (IsCoordinateOnShip(ship, x, y))
+                if (IsCoordinateOnShip(ship, x, y)) 
                 {
                     // Проверяем, не стреляли ли уже сюда
                     if (!ship.HitCoordinates.Any(c => c.X == x && c.Y == y))
                     {
                         ship.HitCoordinates.Add(new Coordinate { X = x, Y = y });
                     }
-                    return new ShotResultDto { IsHit = true, X = x, Y = y };
+                    return new ShotResultDto { IsHit = true, X = x, Y = y }; //Возращаем Dtos с попаданием
                 }
             }
-            return new ShotResultDto { IsHit = false, X = x, Y = y };
+            return new ShotResultDto { IsHit = false, X = x, Y = y }; // Возвращаем Dtos с промахом
         }
-        private bool IsCoordinateOnShip(ShipPlacement ship, int x, int y)
+        private bool IsCoordinateOnShip(ShipPlacement ship, int x, int y) // метод по расстановке кораблей
         {
-            if (ship.IsHorizontal)
+            if (ship.IsHorizontal) //Проверка на горизонтальный корабль
             {
-                return y == ship.StartY &&
+                return y == ship.StartY && 
                        x >= ship.StartX &&
                        x < ship.StartX + ship.Size;
             }
-            else
+            else // Иначе вертикальный
             {
                 return x == ship.StartX &&
                        y >= ship.StartY &&
@@ -214,7 +214,7 @@ namespace SeaFight.API.Hubs
             }
         }
 
-        private async Task SaveShotToDatabase(string gameId, Guid? targetPlayerId, int x, int y, ShotResultDto result)
+        private async Task SaveShotToDatabase(string gameId, Guid? targetPlayerId, int x, int y, ShotResultDto result) //Метод сохранения попадания в базу данных
         {
             var shot = new GameShotModel
             {
@@ -231,7 +231,7 @@ namespace SeaFight.API.Hubs
             await _context.SaveChangesAsync();
         }
 
-        private bool CheckIfShipSunk(List<ShipPlacement> ships, int x, int y)
+        private bool CheckIfShipSunk(List<ShipPlacement> ships, int x, int y) //Метод по проверки корабля который утонул
         {
             // Находим корабль, в который попали
             var hitShip = ships.FirstOrDefault(ship =>
@@ -247,7 +247,7 @@ namespace SeaFight.API.Hubs
             return ships.All(ship => ship.IsSunk);
         }
 
-        private async Task FinishGame(string gameId, GameSession gameSession, string winnerConnectionId)
+        private async Task FinishGame(string gameId, GameSession gameSession, string winnerConnectionId)// Метод по завершению игры
         {
             var winnerName = winnerConnectionId == gameSession.Player1ConnectionId
                 ? gameSession.Player1Name
@@ -280,9 +280,9 @@ namespace SeaFight.API.Hubs
             // _activeGames.Remove(gameId);
         }
 
-        public async Task<bool> AreBothPlayersReady(string gameId)
+        public async Task<bool> AreBothPlayersReady(string gameId) 
         {
-            if (_activeGames.TryGetValue(gameId, out var gameSession))
+            if (_activeGames.TryGetValue(gameId, out var gameSession)) 
             {
                 return gameSession.Player1Ships.Count > 0 &&
                        gameSession.Player2Ships.Count > 0 &&

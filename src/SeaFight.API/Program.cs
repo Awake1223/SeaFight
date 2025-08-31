@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using SeaFight.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,21 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddSignalR();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "SeaFight API",
+        Version = "v1",
+        Description = "API для игры Морской Бой",
+        Contact = new OpenApiContact
+        {
+            Name = "Development Team",
+            Email = "dev@seafight.com"
+        }
+    });
+
+});
 
 builder.Services.AddDbContext<SeaFightDbContext>(
     options =>
@@ -19,8 +36,18 @@ builder.Services.AddDbContext<SeaFightDbContext>(
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "SeaFight API v1");
+        c.RoutePrefix = "swagger"; // Доступ по /swagger
+    });
+}
+
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }

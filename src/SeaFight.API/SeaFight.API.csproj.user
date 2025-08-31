@@ -2,6 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugProfile>https</ActiveDebugProfile>
-    <UnoRemoteControlPort>49295</UnoRemoteControlPort>
+    <UnoRemoteControlPort>55192</UnoRemoteControlPort>
   </PropertyGroup>
 </Project>

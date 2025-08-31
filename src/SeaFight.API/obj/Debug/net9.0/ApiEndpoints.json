@@ -1,0 +1,74 @@
+[
+  {
+    "ContainingType": "SeaFight.API.Controllers.GameController",
+    "Method": "GetActiveGames",
+    "RelativePath": "Game/active",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "SeaFight.API.DTOs.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[SeaFight.API.DTOs.ActiveGameResponse, SeaFight.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SeaFight.API.Controllers.GameController",
+    "Method": "CreateGameSession",
+    "RelativePath": "Game/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SeaFight.API.DTOs.CreateGameSessionRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SeaFight.API.DTOs.ApiResponse\u00601[[SeaFight.API.DTOs.GameSessionResponse, SeaFight.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SeaFight.API.Controllers.GameController",
+    "Method": "JoinGameSession",
+    "RelativePath": "Game/join",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SeaFight.API.DTOs.JoinGameRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SeaFight.API.DTOs.ApiResponse\u00601[[SeaFight.API.DTOs.JoinGameResponse, SeaFight.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

@@ -9,3 +9,15 @@ C:\Users\User\source\repos\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\SeaFigh
 C:\Users\User\source\repos\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\refint\SeaFight.Domain.dll
 C:\Users\User\source\repos\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\SeaFight.Domain.pdb
 C:\Users\User\source\repos\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\ref\SeaFight.Domain.dll
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\bin\Debug\net9.0\SeaFight.Domain.deps.json
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\bin\Debug\net9.0\SeaFight.Domain.dll
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\bin\Debug\net9.0\SeaFight.Domain.pdb
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\SeaFight.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\SeaFight.Domain.AssemblyInfoInputs.cache
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\SeaFight.Domain.AssemblyInfo.cs
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\SeaFight.Domain.csproj.CoreCompileInputs.cache
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\SeaFight.Domain.sourcelink.json
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\SeaFight.Domain.dll
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\refint\SeaFight.Domain.dll
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\SeaFight.Domain.pdb
+C:\Users\zhora\source\repos\SeaFight\SeaFight\src\SeaFight.Domain\obj\Debug\net9.0\ref\SeaFight.Domain.dll

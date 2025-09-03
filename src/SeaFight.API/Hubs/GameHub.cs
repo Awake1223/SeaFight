@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using SeaFight.API.DTOs;
 using SeaFight.API.Models;
@@ -64,31 +65,248 @@ namespace SeaFight.API.Hubs
             return false; //Ииначе метод false
         }
 
-        public async Task<bool> PlaceShips(string gameId, List<ShipPlacement> ships) //метод по расстановке кораблей, который должен включать в себя gameId и список моделей ЭРасположение кораблей"
+        public async Task<PlaceShipsResponse> PlaceShips(PlaceShipsRequest request)
         {
-            if (_activeGames.TryGetValue(gameId, out var game)) // Проверка на существование игры
+            try
             {
-                
-                if (Context.ConnectionId == game.Player1ConnectionId)  //Проверка подключения 1 игрока 
+                if (!_activeGames.TryGetValue(request.GameId, out var gameSession))
                 {
-                    game.Player1Ships = ships; 
-                }
-                else //Проверка подключения второго игрока
-                {
-                    game.Player2Ships = ships;
-                }
-
-              
-                if (game.Player1Ships.Count > 0 && game.Player2Ships.Count > 0) //Минимальная проверка(поставили ли хотя бы 1 корабль, нужно будет сделать логику)
-                {
-                    await Clients.Group(gameId).SendAsync("AllPlayersReady"); 
+                    return new PlaceShipsResponse
+                    {
+                        Success = false,
+                        Error = "Game not found"
+                    };
                 }
 
-                return true;
+                // Определяем игрока
+                var isPlayer1 = Context.ConnectionId == gameSession.Player1ConnectionId;
+                var playerId = isPlayer1 ? gameSession.Player1Id : gameSession.Player2Id;
+
+                if (!playerId.HasValue)
+                {
+                    return new PlaceShipsResponse
+                    {
+                        Success = false,
+                        Error = "Player not found"
+                    };
+                }
+
+                // 1. Валидация расстановки
+                var validationResult = ValidateShipPlacement(request.Ships);
+                if (!validationResult.IsValid)
+                {
+                    return new PlaceShipsResponse
+                    {
+                        Success = false,
+                        Error = "Invalid ship placement",
+                        ValidationErrors = validationResult.ErrorMessage()
+                    };
+                }
+
+                // 2. Сохраняем корабли в БД через Domain модель
+                await SaveShipsToDatabase(request.GameId, playerId.Value, request.Ships);
+
+                // 3. Обновляем игровую сессию
+                if (isPlayer1)
+                {
+                    gameSession.Player1ShipsValidated = true;
+                }
+                else
+                {
+                    gameSession.Player2ShipsValidated = true;
+                }
+
+                // 4. Уведомляем о готовности игрока
+                await Clients.Group(request.GameId).SendAsync("PlayerReady",
+                    isPlayer1 ? gameSession.Player1Name : gameSession.Player2Name);
+
+                // 5. Если оба игрока готовы - начинаем игру
+                if (gameSession.Player1ShipsValidated && gameSession.Player2ShipsValidated)
+                {
+                    gameSession.IsGameStarted = true;
+                    gameSession.CurrentPlayerConnectionId = gameSession.Player1ConnectionId;
+
+                    await Clients.Group(request.GameId).SendAsync("AllPlayersReady");
+                    await Clients.Client(gameSession.CurrentPlayerConnectionId).SendAsync("YourTurn");
+                }
+
+                return new PlaceShipsResponse
+                {
+                    Success = true,
+                    Message = "Ships placed successfully"
+                };
             }
+            catch (Exception ex)
+            {
+                return new PlaceShipsResponse
+                {
+                    Success = false,
+                    Error = ex.Message
+                };
+            }
+        }
+
+
+        private async Task SaveShipsToDatabase(string gameId, Guid playerId, List<ShipPlacementRequest> shipsDto)
+        {
+            var gameGuid = Guid.Parse(gameId);
+
+            // Удаляем предыдущую расстановку (если игрок переставлял)
+            var existingShips = _context.Ship
+                .Where(s => s.GameId == gameGuid && s.PlayerId == playerId);
+            _context.Ship.RemoveRange(existingShips);
+
+            // Создаем новые корабли через Domain модель
+            foreach (var shipDto in shipsDto)
+            {
+                var ship = new ShipModel
+                {
+                    GameId = gameGuid,
+                    PlayerId = playerId,
+                    Type = (ShipModel.ShipType)shipDto.Type,
+                    IsHorizontal = shipDto.IsHorizontal,
+                    StartX = shipDto.StartX,
+                    StartY = shipDto.StartY
+                };
+                _context.Ship.Add(ship);
+            }
+
+            await _context.SaveChangesAsync();
+        }
+        private bool HasAdjacentShips(List<ShipPlacementRequest> ships)
+        {
+            var allCoordinates = new HashSet<(int, int)>();
+            var shipCoordinates = new Dictionary<ShipPlacementRequest, List<(int, int)>>();
+
+            // Сначала собираем все координаты кораблей
+            foreach (var ship in ships)
+            {
+                var coordinates = new List<(int, int)>();
+                var size = (int)ship.Type;
+
+                for (int i = 0; i < size; i++)
+                {
+                    var x = ship.IsHorizontal ? ship.StartX + i : ship.StartX;
+                    var y = ship.IsHorizontal ? ship.StartY : ship.StartY + i;
+
+                    coordinates.Add((x, y));
+                    allCoordinates.Add((x, y));
+                }
+                shipCoordinates[ship] = coordinates;
+            }
+
+            // Проверяем соседние клетки для каждого корабля
+            foreach (var ship in ships)
+            {
+                foreach (var coord in shipCoordinates[ship])
+                {
+                    // Проверяем все 8 направлений вокруг клетки
+                    for (int dx = -1; dx <= 1; dx++)
+                    {
+                        for (int dy = -1; dy <= 1; dy++)
+                        {
+                            if (dx == 0 && dy == 0) continue; // Пропускаем саму клетку
+
+                            var neighborX = coord.Item1 + dx;
+                            var neighborY = coord.Item2 + dy;
+
+                            // Если соседняя клетка занята другим кораблем и не является частью этого же корабля
+                            if (allCoordinates.Contains((neighborX, neighborY)) &&
+                                !shipCoordinates[ship].Contains((neighborX, neighborY)))
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+
             return false;
         }
 
+        private Models.ValidationResult ValidateShipPlacement(List<ShipPlacementRequest> ships)
+        {
+            var errors = new List<string>();
+
+            // 1. Проверка количества кораблей (1x4, 2x3, 3x2, 4x1)
+            var shipCounts = ships.GroupBy(s => s.Type)
+                                 .ToDictionary(g => g.Key, g => g.Count());
+
+            var expectedCounts = new Dictionary<ShipType, int>
+            {
+                [ShipType.Battleship] = 1,
+                [ShipType.Cruiser] = 2,
+                [ShipType.Destroyer] = 3,
+                [ShipType.Submarine] = 4
+            };
+
+            foreach (var expected in expectedCounts)
+            {
+                if (!shipCounts.TryGetValue(expected.Key, out var actual) || actual != expected.Value)
+                {
+                    errors.Add($"Expected {expected.Value} {expected.Key}(s), got {actual}");
+                }
+            }
+
+            // 2. Проверка координат
+            foreach (var ship in ships)
+            {
+                if (!IsShipWithinBoard(ship))
+                {
+                    errors.Add($"{ship.Type} at ({ship.StartX},{ship.StartY}) is outside the board");
+                }
+            }
+
+            // 3. Проверка пересечений
+            if (HasOverlappingShips(ships))
+            {
+                errors.Add("Ships cannot overlap");
+            }
+
+            // 4. Проверка расстояния между кораблями
+            if (HasAdjacentShips(ships))
+            {
+                errors.Add("Ships must be at least 1 cell apart");
+            }
+
+            return new Models.ValidationResult
+            {
+                IsValid = errors.Count == 0,
+                Errors = errors
+            };
+        }
+
+        private bool IsShipWithinBoard(ShipPlacementRequest ship)
+        {
+            var size = (int)ship.Type;
+            var endX = ship.IsHorizontal ? ship.StartX + size - 1 : ship.StartX;
+            var endY = ship.IsHorizontal ? ship.StartY : ship.StartY + size - 1;
+
+            return ship.StartX >= 0 && ship.StartY >= 0 &&
+                   endX < 10 && endY < 10;
+        }
+
+        private bool HasOverlappingShips(List<ShipPlacementRequest> ships)
+        {
+            var allCoordinates = new HashSet<(int, int)>();
+
+            foreach (var ship in ships)
+            {
+                var size = (int)ship.Type;
+                for (int i = 0; i < size; i++)
+                {
+                    var x = ship.IsHorizontal ? ship.StartX + i : ship.StartX;
+                    var y = ship.IsHorizontal ? ship.StartY : ship.StartY + i;
+
+                    if (!allCoordinates.Add((x, y)))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
 
         public async Task<ShotResultDto> Shoot(string gameId, int x, int y) // Метод который отвечает за реализацию выстрела (Использует Dto ShotResult)
         {

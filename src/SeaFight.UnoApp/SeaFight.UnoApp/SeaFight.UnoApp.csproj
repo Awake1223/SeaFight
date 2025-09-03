@@ -38,5 +38,6 @@
       SkiaRenderer;
     </UnoFeatures>
   </PropertyGroup>
+  <ItemGroup />
 
 </Project>

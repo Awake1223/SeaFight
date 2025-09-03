@@ -31,8 +31,22 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<SeaFightDbContext>(
     options =>
     {
-        options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(SeaFightDbContext)));
+        options.UseNpgsql(builder.Configuration.GetConnectionString("SeaFightDbContext"));
     });
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowUnoApp", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .WithOrigins("https://localhost:5000");
+    });
+});
+
+
+
 
 var app = builder.Build();
 
@@ -51,6 +65,9 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 

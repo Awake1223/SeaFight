@@ -22,5 +22,8 @@ namespace SeaFight.API.Models
         public bool IsGameFinished { get; set; }
         public string Winner { get; set; }
         public string WinnerConnectionId { get; set; }
+
+        public bool Player1ShipsValidated { get; set; }
+        public bool Player2ShipsValidated { get; set; }
     }
 }

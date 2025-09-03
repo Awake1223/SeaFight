@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SeaFight.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+faff15269358aeb754332a6f5b506d90242f5b7b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+347caecaa01ec6528439895c42545605cf621503")]
 [assembly: System.Reflection.AssemblyProductAttribute("SeaFight.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SeaFight.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

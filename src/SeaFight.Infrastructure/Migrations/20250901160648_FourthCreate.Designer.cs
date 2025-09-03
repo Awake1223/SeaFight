@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SeaFight.Infrastructure;
@@ -11,9 +12,11 @@ using SeaFight.Infrastructure;
 namespace SeaFight.Infrastructure.Migrations
 {
     [DbContext(typeof(SeaFightDbContext))]
-    partial class SeaFightDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250901160648_FourthCreate")]
+    partial class FourthCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

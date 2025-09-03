@@ -55,6 +55,7 @@ namespace SeaFight.API.Controllers
                     GameId = gameId,
                     PlayerId = user.Id,
                     PlayerName = user.Name,
+                    OpponentName = null,
                     ConnectionToken = GenerateConnectionToken(user.Id, gameId)
                 };
                 return Ok(new ApiResponse<GameSessionResponse>
@@ -108,7 +109,8 @@ namespace SeaFight.API.Controllers
                 {
                     GameId = request.GameId,
                     PlayerId = player2.Id,
-                    PlayerName = game.Player1.Name,
+                    PlayerName = player2.Name, // Имя текущего игрока
+                    OpponentName = game.Player1.Name, // Имя оппонента (первого игрока)
                     ConnectionToken = GenerateConnectionToken(player2.Id, request.GameId)
                 };
                 return Ok(new ApiResponse<JoinGameResponse>

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.API\\SeaFight.API.csproj": {}
+    "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.API\\SeaFight.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.API\\SeaFight.API.csproj": {
+    "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.API\\SeaFight.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.API\\SeaFight.API.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.API\\SeaFight.API.csproj",
         "projectName": "SeaFight.API",
-        "projectPath": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.API\\SeaFight.API.csproj",
-        "packagesPath": "C:\\Users\\zhora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.API\\obj\\",
+        "projectPath": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.API\\SeaFight.API.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\zhora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,8 +33,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Infrastructure\\SeaFight.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Infrastructure\\SeaFight.Infrastructure.csproj"
+              "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Infrastructure\\SeaFight.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Infrastructure\\SeaFight.Infrastructure.csproj"
               }
             }
           }
@@ -99,24 +99,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Domain\\SeaFight.Domain.csproj": {
+    "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Domain\\SeaFight.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Domain\\SeaFight.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Domain\\SeaFight.Domain.csproj",
         "projectName": "SeaFight.Domain",
-        "projectPath": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Domain\\SeaFight.Domain.csproj",
-        "packagesPath": "C:\\Users\\zhora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Domain\\obj\\",
+        "projectPath": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Domain\\SeaFight.Domain.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\zhora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -165,24 +165,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Infrastructure\\SeaFight.Infrastructure.csproj": {
+    "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Infrastructure\\SeaFight.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Infrastructure\\SeaFight.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Infrastructure\\SeaFight.Infrastructure.csproj",
         "projectName": "SeaFight.Infrastructure",
-        "projectPath": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Infrastructure\\SeaFight.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\zhora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Infrastructure\\SeaFight.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\zhora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -198,8 +198,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Domain\\SeaFight.Domain.csproj": {
-                "projectPath": "C:\\Users\\zhora\\source\\repos\\SeaFight\\SeaFight\\src\\SeaFight.Domain\\SeaFight.Domain.csproj"
+              "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Domain\\SeaFight.Domain.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\SeaFight\\src\\SeaFight.Domain\\SeaFight.Domain.csproj"
               }
             }
           }
@@ -257,7 +257,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

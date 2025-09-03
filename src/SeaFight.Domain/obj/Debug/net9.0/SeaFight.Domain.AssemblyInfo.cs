@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SeaFight.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+347caecaa01ec6528439895c42545605cf621503")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58a77135ad9ccd39696278ba4f981a0b7748e224")]
 [assembly: System.Reflection.AssemblyProductAttribute("SeaFight.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SeaFight.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
